@@ -14,18 +14,19 @@ class LinkedList{
     
 //////////// ADD AT END////////////////////////
     addAtEnd(data){
-      let  newNode = new Node(data)   
-    if(this.head == null){
+      let newNode = new Node(data)
+
+      if(this.head===null){
         this.head = newNode
         return
-    }   
-    let curr  = this.head 
-    
-    while(curr.next !== null){
+      }
+
+       let curr = this.head
+
+       while(curr.next){
         curr = curr.next
-    }
-    
-    curr.next = newNode
+       }
+       curr.next = newNode
 }
   
 /////////////ADD AT FIRST//////////////////
@@ -41,40 +42,51 @@ class LinkedList{
 
 ///////////DELETE AT END////////////////////
   deleteAtENd(){
-    let curr  = this.head 
-    while(curr.next.next !==null){
-        curr = curr.next
-    }
-        curr.next = null
+   if(this.head == null){
+    console.log('there is no node have .to delete')
+    return
+   }
+
+   if(this.head.next ==null){
+    this.head = null
+    return
+   }
+
+
+   let curr  = this.head
+   while( curr.next && curr.next.next){
+       curr = curr.next
+   }
+   curr.next = null
   }
 
 /////////////// DELETE AT FIRST/////////////////
   deleteAtFirst(){
-
+    if(this.head == null){
+      console.log('there is no node have to delete')
+      return
+    }
         this.head = this.head.next
+
   }
 ////////////DELETE MIDDLE ELEMENTS////////////////
   deleteMiddleElement(){
    
-    if (this.head === null || this.head.next === null) {
-      console.log("List is too short to delete a middle element.");
-      return;
-  }
+   if(this.next == null || this.head.next == null){
+    console.log('its very short so cant find middel element')
+   }
 
-    let firstPointer = this.head
-    let secondPointer = this.head
-    let previousFirstPointer
+   let slow = this.head
+   let fast = this.head
+   let prev = null
+   while(fast && fast.next){
+      prev = slow
+      slow = slow.next
+      fast = fast.next.next
+   }
 
-    while (secondPointer !== null && secondPointer.next !== null) {
-      previousFirstPointer = firstPointer;
-      firstPointer = firstPointer.next;
-      secondPointer = secondPointer.next.next;
-  }
-
-
-    if(previousFirstPointer!==null)
-      previousFirstPointer.next = firstPointer.next
-    return firstPointer.data
+   return prev.next = slow.next
+   
   }
 
 
@@ -82,23 +94,24 @@ class LinkedList{
 /////////////ADD AT MIDDLE/////////////////
 
 addAtMiddle(data){
-  let  newNode = new Node(data)
-  let firstPointer = this.head
-  let secondPointer = this.head
-  let previousFirstPointer = null
-
-  while (secondPointer !== null && secondPointer.next !== null) {
-    previousFirstPointer = firstPointer;
-    firstPointer = firstPointer.next;
-    secondPointer = secondPointer.next.next;
-}
-
-
-  if(previousFirstPointer!==null){
-    previousFirstPointer.next = newNode
-    newNode.next = firstPointer
-  
+ 
+  if(this.head == null){
+    console.log('no node in linkedlist')
+    return
   }
+
+  let slow = this.head
+  let fast = this.head
+  let prev = null
+  while(fast && fast.next){
+    prev = slow
+    slow = slow.next
+    fast = fast.next.next
+  }
+  let newNode = new Node(data)
+
+  newNode.next = prev.next
+  prev.next = newNode   
    
 }
 
@@ -108,14 +121,24 @@ addAtMiddle(data){
 
 
 findNoteAtData(node){
+
+  if(this.head == null){
+    console.log('linked list is empty')
+    return
+  }
+
   let curr = this.head
   let count = 0 
+  if(node == 0){
+    return this.head.data
+  }
+  
   while(curr){
-    if(count === node){
-      return curr.data
+    if(count === node-1){
+       return curr.data
     }
     count++
-    curr = curr.next;
+    curr = curr.next
   }
 }
 
@@ -151,13 +174,18 @@ addAtFindPos(node,data){
 
 
 removeDupSortedLnkedList(){
-  let curr = this.head
+  if(this.head ==  null){
+    console.log('there is no node have to delete')
+  }
 
-  while(curr.next){
-    if(curr.data==curr.next.data){
-      curr.next=curr.next.next
+  let curr =this.head
+
+  while(curr && curr.next){
+    if(curr.data == curr.next.data){
+      curr.next = curr.next.next
+    }else{
+      curr = curr.next
     }
-    curr = curr.next
   }
 }
 
@@ -166,19 +194,25 @@ removeDupSortedLnkedList(){
 
 
 removeDupicate(){
-  let curr = this.head
 
-  while(curr !== null){
-    let temp = curr
-    while(temp.next !== null){
-      if(temp.next.data===curr.data){
-        temp.next =  temp.next.next
+  if(this.head ==  null){
+    console.log('linkedlist is empty')
+    return
+  }
+
+  let curr = this.head
+  while(curr){
+    let temp = curr 
+    while(temp.next){
+      if(curr.data === temp.next.data){
+        temp.next = temp.next.next
       }else{
         temp = temp.next
-      }      
+      }
     }
-    curr=curr.next
+    curr = curr.next
   }
+
 }
 
 ////////////REVERSE LINKEDLIST ////////////
@@ -188,13 +222,15 @@ reverseLinkedlist(){
   let prev = null
   let curr = this.head
 
-  while(curr){
-    let next = curr.next
+  while(curr && curr.next){
+    let next  = curr.next
     curr.next = prev
     prev = curr
     curr = next
   }
   this.head = prev
+
+
 }
 
 
@@ -242,24 +278,31 @@ let list  = new LinkedList()
 
 list.addAtEnd(50)
 list.addAtEnd(0)
+list.addAtEnd(20)
+list.addAtEnd(20)
+list.addAtEnd(20)
 list.addAtEnd(10)
+list.addAtEnd(10)
+list.addAtEnd(10)
+list.addAtEnd(20)
 list.addAtEnd(20)
 list.addAtEnd(20)
 
 
-list.deleteNodeFromAt(3)
-list.removeDupicate()
-list.reverseLinkedlist()
-list.addAtEnd(10)
-list.addAtFirst(20)
-console.log('find data',list.findNoteAtData(1))
-list.addAtFindPos(2,3000)
-list.removeDupSortedLnkedList()
-list.deleteMiddleElement()
-list.addAtMiddle(100)
-list.deleteAtENd()
-list.deleteAtFirst()
-console.log('.....>',list.deleteMiddleElement());
+
+// list.deleteNodeFromAt(3)
+// list.removeDupicate()
+// list.reverseLinkedlist()
+// list.addAtEnd(10)
+// list.addAtFirst(20)
+// console.log('find data',list.findNoteAtData(9))
+// list.addAtFindPos(2,3000)
+// list.removeDupSortedLnkedList()
+// list.deleteMiddleElement()
+// list.addAtMiddle(100)
+// list.deleteAtENd()
+// list.deleteAtFirst()
+// console.log('.....>',list.deleteMiddleElement());
 
 list.print()
 

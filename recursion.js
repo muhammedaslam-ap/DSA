@@ -75,6 +75,7 @@ head.next.next = new Node(30)
 
 insertNodeAtIndex(head,2,15)
 
+
 let curr = head;
 while (curr) {
     console.log(curr.data,'--->'); 

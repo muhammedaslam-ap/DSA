@@ -1,44 +1,4 @@
-// function Node(data){
-//     this.data = data
-//     this.prev = null
-//     this.next = null
-// }
 
-
-// function forward(head){
-//     let curr = head
-
-//     while(curr){
-//         console.log(curr.data,'---->')
-//         curr =  curr.next
-//     }
-// }
-
-
-// function backWard(prev){
-//     let curr = prev
-
-//     while(curr){
-//         console.log(curr.data,'---->')
-//         curr = curr.prev
-//     }
-// }
-
-// let first = new Node(1)
-// let second = new Node(2)
-// let third = new Node(3)
-
-
-// first.next = second
-// second.prev = first
-// second.next = third
-// third.prev = second
-
-
-
-// // backWard(third)
-
-// forward(first)
 
 
 
@@ -59,21 +19,20 @@ class doubleLinkedList{
 
 ///////////ADD AT END///////////////
     addAtEnd(data){
-        let newNode = new Node(data)
+        let newNode =  new Node(data)
+       if(this.head == null){
+          this.head = newNode
+          return
+       }
 
-        if(this.head == null){
-            this.head = newNode
-            return
-        }
+       let curr  = this.head
 
-        let curr = this.head
+       while(curr && curr.next){
+        curr = curr.next
+       }
 
-        while(curr.next){
-            curr = curr.next
-        }
-
-        curr.next = newNode
-        newNode.prev = curr
+       curr.next = newNode
+       newNode.prev = curr
     }
 
 
@@ -156,7 +115,6 @@ class doubleLinkedList{
 ///////////DELETE AT MIDDLE/////////
     deleteMiddle(){
 
-        let curr = this.head
         
         if(this.head == null){
             console.log('nothing to delete')
@@ -215,7 +173,7 @@ list.addAtEnd(20)
 list.addAtEnd(30)
 list.addAtEnd(40)
 
-// list.deleteAtfirst()
+list.deleteAtfirst()
 // list.deleteAtEnd()
 // list.addAtFirst(100)
 // list.addAtMiddle(222222222)
@@ -224,5 +182,5 @@ list.addAtEnd(40)
 
 
 list.forward()
-// console.log('<------reverse----->')
-// list.backward()
+console.log('<------reverse----->')
+list.backward()
