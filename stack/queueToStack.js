@@ -1,6 +1,6 @@
 
 
-class stackUsingQueue{
+class queueToStack{
     constructor(){
         this.queue1 = []
         this.queue2 = []
@@ -40,22 +40,22 @@ class stackUsingQueue{
 
 }
 
-const q =new stackUsingQueue()
+const stack =new queueToStack()
 
 
-q.push(10)
-q.push(20)
-q.push(30)
-q.push(40)
-q.push(50)
+stack.push(10)
+stack.push(20)
+stack.push(30)
+stack.push(40)
+stack.push(50)
 
 
-q.display()
+stack.display()
 
-q.pop()
-q.pop()
+stack.pop()
+stack.pop()
 
-q.display()
+stack.display()
 
 
 

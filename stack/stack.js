@@ -42,11 +42,10 @@ class Stack{
 
         for(let i = this.stack.length-1;i>mid;i--){
             
-            
             this.stack2.push(this.stack.pop())
         }
 
-        this.sttempack.pop()
+        this.stack.pop()
 
         while(this.stack2.length>0){
             this.stack.push(this.stack2.pop())
