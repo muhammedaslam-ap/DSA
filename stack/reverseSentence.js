@@ -16,7 +16,7 @@ for(i=0;i<str.length;i++){
     }
 }
 
- if(str!==""){
+ if(newStr!==""){
     stack.push(newStr)
  }
 

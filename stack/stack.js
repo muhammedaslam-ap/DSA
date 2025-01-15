@@ -60,21 +60,29 @@ class Stack{
     size(){
         return console.log('size of the stack is:',this.stack.length)
     }
-    sort() {
-        while (this.stack.length) {
-            let temp = this.stack.pop();
-            while (this.stack2.length && this.stack2[this.stack2.length - 1] > temp) {
-                this.stack.push(this.stack2.pop());
-
-                this.print()
+   sort(){
+        while(this.stack.length>0){
+            let temp = this.stack.pop()
+            while(this.stack2 && this.stack2[this.stack2.length-1]>temp){
+                this.stack.push(this.stack2.pop())
             }
-            this.stack2.push();
+
+            this.stack2.push(temp)
         }
-        while (this.stack2.length) {
-            this.stack.push(this.stack2.pop());
+
+        while(this.stack2.length){
+            this.stack.push(this.stack2.pop())
         }
-        return this.stack;
+        return this.stack
     }
+
+    reverse(){
+        while(this.stack.length){
+            this.stack2.push(this.stack.pop())
+        }
+        return this.stack2
+    }
+
     // sorting using recursion
     sortStack(stack = this.stack) {
         if (stack.length == 0) {
@@ -84,6 +92,7 @@ class Stack{
         this.sortStack(stack)
         this.insertElementInOrder(stack, temp)
     }
+     
     insertElementInOrder(stack, elementToInsert) {
         if (stack.length == 0 || stack[stack.length - 1] < elementToInsert) {
             stack.push(elementToInsert)
@@ -113,9 +122,16 @@ class Stack{
         this.insertElement(stack, elementToInsert)
         stack.push(temp)
     }
-//https://www.youtube.com/watch?v=K0XXVSL4wUo    for sorting 
+    //https://www.youtube.com/watch?v=K0XXVSL4wUo    for sorting 
     print(){
-        console.log(this.stack)
+        if(this.stack.length>0){
+            console.log(this.stack)
+
+        }
+        if(this.stack2.length>0){
+            console.log(this.stack2)
+        }
+        
     }
 }
 
@@ -126,15 +142,17 @@ class Stack{
 
 let stack = new Stack()
 
-stack.push(3)
-stack.push(1)
-stack.push(5)
 stack.push(4)
 stack.push(2)
-stack.sortStack()
+stack.push(5)
+stack.push(1)
+stack.push(3)
+stack.sort()
 
 stack.print()
 
-stack.reverseStackUsingRecursion()
+// stack.reverseStackUsingRecursion()
+
+stack.reverse()
 
 stack.print()
