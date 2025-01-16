@@ -1,46 +1,45 @@
 
 
-class queueToStack{
-    constructor(){
-        this.queue1 = []
-        this.queue2 = []
+class stackUsingQueue{
+   constructor(){
+    this.stack1 = []
+    this.stack2 = []
+   }
+
+   push(data){
+    this.stack1.push(data)
+   }
+
+
+   pop(){   
+    if(this.stack1==0){
+        return []
     }
 
-
-    push(data){
-        this.queue1.push(data)
+    while(this.stack1.length){
+        this.stack2.push(this.stack1.shift())
     }
 
-    pop(){
-        if(this.queue1.length===0){
-            return "queue is empty"
-        }
+    let element = this.stack2.shift()
 
-        while(this.queue1.length>1){
-            this.queue2.push(this.queue1.shift())
-        }
-
-        let promptelement = this.queue1.shift()
-
-
-        while(this.queue2.length){
-            this.queue1.push(this.queue2.shift())
-        }
-
-        return promptelement
+    while(this.stack2.length){
+        this.stack1.push(this.stack2.shift())
     }
+    return element
+   }
 
-    display(){
-       if(this.queue1){
-        console.log(this.queue1);
-       }
-        
+
+   display(){
+    if(this.stack1.length>0){     
+            console.log(this.stack1)      
+    }else{
+        console.warn('stack is empty')
     }
-
+   }
 
 }
 
-const stack =new queueToStack()
+const stack =new stackUsingQueue()
 
 
 stack.push(10)
@@ -54,6 +53,9 @@ stack.display()
 
 stack.pop()
 stack.pop()
+stack.pop()
+stack.pop()
+
 
 stack.display()
 
