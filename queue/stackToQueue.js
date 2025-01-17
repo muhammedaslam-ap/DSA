@@ -1,6 +1,6 @@
 
 
-class stackToQueue{
+class queueUsingStack{
     constructor(){
         this.stack = []
         this.stack2 = []

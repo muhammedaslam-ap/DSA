@@ -4,19 +4,19 @@ function quick(arr){
         return arr
     }
 
-    let prevot = arr[0]
+    let pivot = arr[0]
     let left = []
     let rigth = []
 
     for(i=1;i<arr.length;i++){
-        if(arr[i]<prevot){
+        if(arr[i]<pivot){
          left.push(arr[i])
     }else{
         rigth.push(arr[i])
     }
 }
 
-return [...quick(left),prevot,...quick(rigth)]
+return [...quick(left),pivot,...quick(rigth)]
 
 }
 

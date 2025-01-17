@@ -26,6 +26,7 @@ class hashTable {
     for(let i=0;i<this.table[index].length;i++){
         if(this.table[index][i][0]==key){
             this.table[index][i][1] = value
+            return
         }
     }
 
@@ -65,8 +66,7 @@ class hashTable {
         if(backet && backet.length>0){
             console.log(`backet ${i}:${JSON.stringify(backet)}`)
         }
-    }
-        
+    } 
     }
   }
 
@@ -75,10 +75,11 @@ class hashTable {
 
 let hash = new hashTable(10)
 
-hash.set('name', 'aslam');
-hash.set('age', 20);
-hash.set('place', 'tirur');
-console.log(hash.get('name'));   
+hash.set('name', 'aslam')
+hash.set('age', 20)
+hash.set('place', 'tirur')
+hash.set('name','sooraj')
+console.log(hash.get('name'))  
 
 
 hash.display();               
