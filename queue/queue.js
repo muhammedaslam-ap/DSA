@@ -102,21 +102,93 @@ class QueueObj{
 let queueObj = new QueueObj()
 
 
-queueObj.enqueue(10)
-queueObj.enqueue(20)
-queueObj.enqueue(30)
-queueObj.enqueue(40)
+// queueObj.enqueue(10)
+// queueObj.enqueue(20)
+// queueObj.enqueue(30)
+// queueObj.enqueue(40)
 
-console.log(queueObj.dequeue())
-console.log(queueObj.dequeue())
-console.log(queueObj.peak())
+// console.log(queueObj.dequeue())
+// console.log(queueObj.dequeue())
+// console.log(queueObj.peak())
 
-console.log(queueObj.size())
+// console.log(queueObj.size())
 
-console.log(queueObj.isEmpty())
+// console.log(queueObj.isEmpty())
 
 
-queueObj.print()
+// queueObj.print()
+
+ 
+
+class NOde{
+    constructor(data){
+        this.data = data
+        this.next = null
+    }
+}
+
+
+class queueUsingLL{
+    constructor(){
+        this.rear = null
+        this.front =null
+    }
+
+
+    enqueue(data){
+        let newNode  = new NOde(data)
+
+        if(this.rear ==null){
+            this.front = this.rear =newNode
+        }else{
+            this.rear.next = newNode
+            this.rear = newNode
+
+        }
+    }
+
+    dequeue(){
+        if(this.front==null){
+            return "queue is empty"
+        }
+
+        this.front = this.front.next
+
+        if(this.front==null){
+            this.rear=null
+        }
+
+        return
+    }
+    display() {
+        if (!this.front) { 
+            console.log("Queue is empty");
+            return;
+        }
+    
+        let current = this.front;
+        const result = [];
+        while (current) { // Traverse until the end of the queue
+            result.push(current.data); // Collect the data
+            current = current.next; // Move to the next node
+        }
+        console.log("Queue elements:", result.join(" -> "));
+    }
+}
+
+
+const queueLL = new queueUsingLL()
+
+queueLL.enqueue(10)
+queueLL.enqueue(30)
+queueLL.enqueue(20)
+queueLL.enqueue(40)
+queueLL.enqueue(50)
+queueLL.enqueue(80)
+
+queueLL.dequeue()
+
+queueLL.display()
 
 
 

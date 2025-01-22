@@ -1,29 +1,28 @@
 
 
-function merge(arr){
+function mergeSort(arr){
     if(arr.length<=1){
         return arr
-    }
-
-    let mid = Math.floor(arr.length/2)
-
-    let left = merge( arr.slice(0,mid))
-    let right = merge(arr.slice(mid))
-
-    return merging(left,right)
-}
-
-function merging(left,right){
-    let sortedArray = []
-    while(left.length && right.length){
-        if(left[0] < right[0]){
-            sortedArray.push(left.shift())
-        }else{
-            sortedArray.push(right.shift())
+       }
+    
+       const mid = Math.floor(arr.length/2)
+    
+       const left = mergeSort(arr.slice(0,mid))
+       const rigth = mergeSort(arr.slice(mid))
+    
+       return merge(left,rigth)  
+    
+function merge(left,rigth){
+        let sortedAray = []
+        while(left.length && rigth.length){
+            if(left[0]<rigth[0]){
+                sortedAray.push(left.shift())
+            }else{
+                sortedAray.push(rigth.shift())
+            }
         }
+        return [...sortedAray,...left,...rigth]
     }
-
-    return [...sortedArray,...left,...right]
 }
 
-console.log(merge([3,4,5,6,7,1,6,8,0,9]))
+console.log(mergeSort([3,4,5,6,7,1,6,8,0,9]))

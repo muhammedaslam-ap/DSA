@@ -1,22 +1,24 @@
 
 function quick(arr){
+    
     if(arr.length<=1){
         return arr
     }
 
     let pivot = arr[0]
-    let left = []
+    let left =[]
     let rigth = []
 
     for(i=1;i<arr.length;i++){
         if(arr[i]<pivot){
-         left.push(arr[i])
-    }else{
-        rigth.push(arr[i])
+            left.push(arr[i])
+        }else{
+            rigth.push(arr[i])
+        }
     }
-}
 
-return [...quick(left),pivot,...quick(rigth)]
+    return [...quick(left),pivot,...quick(rigth)]
+
 
 }
 

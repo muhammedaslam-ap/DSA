@@ -18,7 +18,6 @@ class hashT{
         }
     }
     
-
     display(){
        console.log(this.arr)
     }

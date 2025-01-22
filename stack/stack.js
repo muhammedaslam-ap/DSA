@@ -61,19 +61,20 @@ class Stack{
         return console.log('size of the stack is:',this.stack.length)
     }
    sort(){
-        while(this.stack.length>0){
-            let temp = this.stack.pop()
-            while(this.stack2 && this.stack2[this.stack2.length-1]>temp){
-                this.stack.push(this.stack2.pop())
-            }
-
-            this.stack2.push(temp)
-        }
-
-        while(this.stack2.length){
+    
+    while(this.stack.length>0){
+        let temp  = this.stack.pop()
+        while(this.stack2 && this.stack2[this.stack2.length-1]>temp){
             this.stack.push(this.stack2.pop())
         }
-        return this.stack
+
+        this.stack2.push(temp)
+       }
+
+       while(this.stack2.length>0){
+        this.stack.push(this.stack2.pop())
+       }
+        return this.stack 
     }
 
     reverse(){
