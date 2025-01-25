@@ -26,7 +26,7 @@ class Heap{
 
     heapifyUp(){
         let index = this.heap.length-1
-        while(index > 0 && this.heap[index] < this.heap[this.getparent(index)]){
+        while(index > 0 && this.heap[index] > this.heap[this.getparent(index)]){
             this.swap(index,this.getparent(index))
             index = this.getparent(index)
         }
@@ -41,11 +41,11 @@ class Heap{
         while(this.getLeftChild(index)<this.heap.length){
             let largest  = this.getLeftChild(index)
 
-            if(this.getRightChild(index)<this.heap.length &&  this.heap[this.getRightChild(index)] < this.heap[largest]){
+            if(this.getRightChild(index)<this.heap.length &&  this.heap[this.getRightChild(index)] > this.heap[largest]){
                 largest = this.getRightChild(index)
             }
 
-            if(this.heap[index] <= this.heap[largest]){
+            if(this.heap[index] >= this.heap[largest]){
                 break
             }
 
@@ -84,12 +84,12 @@ const MaxHeap = new Heap()
 MaxHeap.insert(10)
 MaxHeap.insert(50)
 MaxHeap.insert(5)
-// MaxHeap.insert(10)
-// MaxHeap.insert(30)
-// MaxHeap.insert(40)
-// MaxHeap.insert(70)
-// MaxHeap.insert(40)
-// MaxHeap.insert(80)
+MaxHeap.insert(10)
+MaxHeap.insert(30)
+MaxHeap.insert(40)
+MaxHeap.insert(70)
+MaxHeap.insert(40)
+MaxHeap.insert(80)
 
 
 MaxHeap.remove(80)

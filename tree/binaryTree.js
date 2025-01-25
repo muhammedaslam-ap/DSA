@@ -64,28 +64,28 @@ class binaryTree{
 
 let Tree =new binaryTree(1)
 
-//  Tree.insert(10)
-//  Tree.insert(20)
-//  Tree.insert(40)
-//  Tree.insert(60)
-//  Tree.insert(70)
-//  Tree.insert(30)
-//  Tree.insert(80)
+ Tree.insert(10)
+ Tree.insert(20)
+ Tree.insert(40)
+ Tree.insert(60)
+ Tree.insert(70)
+ Tree.insert(30)
+ Tree.insert(80)
 
-//  console.log('inOrder-------><------inOrder')
-
-
-//  Tree.inOrder()
+ console.log('inOrder-------><------inOrder')
 
 
-//  console.log('preOrder-------><------preOrder')
-
-//  Tree.preOrder()
+ Tree.inOrder()
 
 
-//  console.log('postOrder-------><------postOrder')
+ console.log('preOrder-------><------preOrder')
 
-//  Tree.postOrder()
+ Tree.preOrder()
+
+
+ console.log('postOrder-------><------postOrder')
+
+ Tree.postOrder()
 
 
 
@@ -144,6 +144,8 @@ class  SearchTree{
         return false
 
     }
+
+
     findMin(node) {
         while (node.left) {
             node = node.left;
@@ -163,6 +165,7 @@ class  SearchTree{
         }else if(value>node.value){
             node.right = this.removeElement(value, node.right);
         }else{
+            
             if(!node.left && !node.right){
                 return null
             }
@@ -193,8 +196,8 @@ class  SearchTree{
     preOrder(node = this.root, result = []) {
         if (!node) return result;
         result.push(node.value);
-        this.inOrder(node.left, result);
-        this.inOrder(node.right, result);
+        this.preOrder(node.left, result);
+        this.preOrder(node.right, result);
         return result;
     }
 
@@ -207,23 +210,23 @@ class  SearchTree{
     }
 }
 
-let BINARYSEARCHTREE = new SearchTree(5)
+// let BINARYSEARCHTREE = new SearchTree(5)
 
-BINARYSEARCHTREE.insert(10)
-BINARYSEARCHTREE.insert(30)
-BINARYSEARCHTREE.insert(50)
-BINARYSEARCHTREE.insert(70)
-BINARYSEARCHTREE.insert(20)
-
-
-BINARYSEARCHTREE.removeElement(20)
-
-console.log(BINARYSEARCHTREE.inOrder())
-console.log(BINARYSEARCHTREE.preOrder())
-console.log(BINARYSEARCHTREE.postOrder())
+// BINARYSEARCHTREE.insert(10)
+// BINARYSEARCHTREE.insert(30)
+// BINARYSEARCHTREE.insert(50)
+// BINARYSEARCHTREE.insert(70)
+// BINARYSEARCHTREE.insert(20)
 
 
-console.log(BINARYSEARCHTREE.contains(20))
+// BINARYSEARCHTREE.removeElement(20)
+
+// console.log(BINARYSEARCHTREE.inOrder())
+// console.log(BINARYSEARCHTREE.preOrder())
+// console.log(BINARYSEARCHTREE.postOrder())
+
+
+// console.log(BINARYSEARCHTREE.contains(20))
 
 
 

@@ -22,9 +22,12 @@ class trieNode {
         node = node.children[char]; 
       }
       node.isEndOfWord = true; 
+
     }
- /////search//////////
-    search(word){
+
+   /////search//////////
+
+    search(word) {
         let node = this.root
 
         for(let char of word){
@@ -36,19 +39,19 @@ class trieNode {
         return  node.isEndOfWord 
     }
 
+
 //////////////////remove node///////////////////
+
     remove( word,node = this.root,depth = 0) {
         if (!node) {
           return false;
         }
-    
+
         if (depth == word.length) {
           if (!node.isEndOfWord) {
             return false;
           }
-    
           node.isEndOfWord = false;
-    
           return Object.keys(node.children).length === 0;
         }
     
@@ -62,9 +65,11 @@ class trieNode {
         return Object.keys(node.children).length === 0 && !node.isEndOfWord;
       }
 
+
       /////////autoCompletion///////
   
     autoCompletion(prefix){
+      
         let node = this.root
 
         for(let char of prefix){
